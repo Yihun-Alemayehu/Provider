@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/Widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
@@ -58,8 +59,8 @@ class TasksScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               // width: MediaQuery.of(context).size.width * 1.2,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
+              child: const Padding(
+                padding: EdgeInsets.only(left: 20),
                 child: TasksList(),
               ),
             ),
@@ -74,26 +75,6 @@ class TasksScreen extends StatelessWidget {
           color: Colors.white,
           size: 38,
         ),
-      ),
-    );
-  }
-
-  ListView TasksList() {
-    return ListView(
-      children: [
-        TaskTile(),
-        TaskTile(),
-        TaskTile(),
-      ],
-    );
-  }
-
-  ListTile TaskTile() {
-    return ListTile(
-      title: const Text('Buy milk'),
-      trailing: Checkbox(
-        value: false,
-        onChanged: (value) => true,
       ),
     );
   }
