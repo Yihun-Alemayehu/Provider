@@ -30,6 +30,8 @@ class AddNewTask extends StatelessWidget {
               height: 10,
             ),
             TextField(
+              textAlign: TextAlign.center,
+              autofocus: true,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20),
