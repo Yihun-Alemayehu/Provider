@@ -1,13 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class TaskTile extends StatefulWidget {
-  const TaskTile({super.key});
+  const TaskTile({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<TaskTile> createState() => _TaskTileState();
 }
 
 class _TaskTileState extends State<TaskTile> {
+  late String tileTitle;
   bool isChecked = false;
 
   void checkBoxCallBack(bool? checkBoxState) {
@@ -20,7 +24,7 @@ class _TaskTileState extends State<TaskTile> {
   Widget build(BuildContext context) {
     return ListTile(
         title: Text(
-          'Buy milk',
+          tileTitle,
           style: TextStyle(
             decoration: isChecked ? TextDecoration.lineThrough : null,
           ),

@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 
-class AddNewTask extends StatelessWidget {
+class AddNewTask extends StatefulWidget {
   const AddNewTask({super.key});
 
+  @override
+  State<AddNewTask> createState() => _AddNewTaskState();
+}
+
+class _AddNewTaskState extends State<AddNewTask> {
+  final TextEditingController _controller = TextEditingController();
+
+  // @override
+  // void dispose() {
+  //   _controller = TextEditingController();
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,6 +42,7 @@ class AddNewTask extends StatelessWidget {
               height: 10,
             ),
             TextField(
+              controller: _controller,
               textAlign: TextAlign.center,
               autofocus: true,
               decoration: InputDecoration(
@@ -49,7 +62,9 @@ class AddNewTask extends StatelessWidget {
               // style: TextButton.styleFrom(
               //   backgroundColor: Colors.blueAccent,
               // ),
-              onPressed: () {},
+              onPressed: () {
+                
+              },
               child: const Text(
                 'Add',
                 style: TextStyle(

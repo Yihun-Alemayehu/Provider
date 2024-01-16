@@ -7,6 +7,7 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     String tileTitle;
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Column(
