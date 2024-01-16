@@ -50,7 +50,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              // padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.only(left: 20),
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
@@ -59,17 +59,34 @@ class TasksScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               // width: MediaQuery.of(context).size.width * 1.2,
-              child: const Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: TasksList(),
-              ),
+              child: TasksList(),
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('add Task'),
+                    TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      )),
+                    )
+                  ],
+                ),
+              );
+            },
+          );
+        },
         child: const Icon(
           Icons.add,
           color: Colors.white,
