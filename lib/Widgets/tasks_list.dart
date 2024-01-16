@@ -14,17 +14,28 @@ class TasksList extends StatefulWidget {
 }
 
 class _TasksListState extends State<TasksList> {
-
-  List<Task> tasks = [];
+  List<Task> tasks = [
+    Task(name: 'buy milk'),
+    Task(name: 'buy eggs'),
+    Task(name: 'buy bread'),
+    Task(name: 'buy pc'),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: const [
-        TaskTile(),
-        TaskTile(),
-        TaskTile(),
-      ],
+    return ListView.builder(
+      itemCount: tasks.length,
+      itemBuilder: (context, index) {
+        return TaskTile(
+            taskTitle: tasks[index].name, isChecked: tasks[index].isDone,
+            checkBoxCallBack: (checkBoxState){
+              setState(() {
+                tasks[index].toggleDone();
+              });
+            }
+            );
+
+      },
     );
   }
 }
