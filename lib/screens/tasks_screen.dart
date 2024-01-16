@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoey/Widgets/tasks_list.dart';
+import 'package:todoey/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
@@ -70,20 +71,7 @@ class TasksScreen extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('add Task'),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      )),
-                    )
-                  ],
-                ),
-              );
+              return const AddNewTask();
             },
           );
         },
