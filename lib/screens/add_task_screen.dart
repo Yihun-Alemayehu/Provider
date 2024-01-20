@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
 import 'package:todoey/models/task_model.dart';
 
-typedef TaskAddedCallBack = void Function(List<Task> updatedTasks);
-class AddNewTask extends StatefulWidget {
-  final TaskAddedCallBack onTaskAdded;
-  final List<Task> tasks;
-  const AddNewTask({super.key, required this.tasks, required this.onTaskAdded});
-
-  @override
-  State<AddNewTask> createState() => _AddNewTaskState();
-}
-
-class _AddNewTaskState extends State<AddNewTask> {
+class AddNewTask extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -62,10 +54,12 @@ class _AddNewTaskState extends State<AddNewTask> {
               //   backgroundColor: Colors.blueAccent,
               // ),
               onPressed: () {
-                setState(() {
-                  widget.tasks.add(Task(name: _controller.text));
-                  widget.onTaskAdded(widget.tasks);
-                });
+                Provider.of<TaskData>(context, listen: false)
+                    .addNotes(Task(name: _controller.text));
+                // setState(() {
+                //   widget.tasks.add(Task(name: _controller.text));
+                //   widget.onTaskAdded(widget.tasks);
+                // }); 
                 Navigator.of(context).pop();
               },
               child: const Text(

@@ -16,23 +16,23 @@ class TaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: Text(
-          taskTitle,
-          style: TextStyle(
-            decoration: isChecked ? TextDecoration.lineThrough : null,
-          ),
+      title: Text(
+        taskTitle,
+        style: TextStyle(
+          decoration: isChecked ? TextDecoration.lineThrough : null,
         ),
-        trailing: Checkbox(
-          activeColor: Colors.blueAccent,
-          value: isChecked,
-          // onChanged: (value) => false,
-          onChanged: checkBoxCallBack,
-          // (value) {
-
-          //   // setState(() {
-          //   //   isChecked = !isChecked;
-          //   // });
-          // },
-        ));
+      ),
+      trailing: Checkbox(
+        activeColor: Colors.blueAccent,
+        value: isChecked,
+        // onChanged: (value) => false,
+        onChanged: checkBoxCallBack,
+        // (value) {
+          
+        //   // setState(() {
+        //   //   isChecked = !isChecked;
+        //   // });
+        // },
+      ),);
   }
 }
