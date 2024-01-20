@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey/Widgets/tasks_list.dart';
 import 'package:todoey/models/task_data.dart';
-import 'package:todoey/screens/add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
@@ -42,7 +41,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${Provider.of<TaskData>(context).tasks.length} tasks',
+                  '${Provider.of<TaskData>(context).taskCount} tasks',
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,

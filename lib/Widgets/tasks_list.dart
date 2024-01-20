@@ -7,20 +7,19 @@ import 'package:todoey/models/task_data.dart';
 class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Provider.of<TaskData>(context, listen: false).tasks.length,
-      itemBuilder: (context, index) {
-        return TaskTile(
-            taskTitle:
-                Provider.of<TaskData>(context, listen: false).tasks[index].name,
-            isChecked: Provider.of<TaskData>(context, listen: false)
-                .tasks[index]
-                .isDone,
-            checkBoxCallBack: (checkBoxState) {
-              Provider.of<TaskData>(context, listen: false)
-                  .tasks[index]
-                  .toggleDone();
-            });
+    return Consumer<TaskData>(
+      builder: (context, value, child) {
+        return ListView.builder(
+          itemCount: value.taskCount,
+          itemBuilder: (context, index) {
+            return TaskTile(
+                taskTitle: value.tasks[index].name,
+                isChecked: value.tasks[index].isDone,
+                checkBoxCallBack: (checkBoxState) {
+                  value.tasks[index].toggleDone();
+                });
+          },
+        );
       },
     );
   }
