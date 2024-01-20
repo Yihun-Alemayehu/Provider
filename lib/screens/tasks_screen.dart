@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoey/Widgets/tasks_list.dart';
-import 'package:todoey/models/task_model.dart';
+import 'package:todoey/models/task_data.dart';
 import 'package:todoey/screens/add_task_screen.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'buy milk'),
-    Task(name: 'buy eggs'),
-    Task(name: 'buy bread'),
-    Task(name: 'buy pc'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +42,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length} tasks',
+                  '${Provider.of<TaskData>(context).tasks.length} tasks',
                   style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -74,7 +63,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 color: Colors.white,
               ),
               // width: MediaQuery.of(context).size.width * 1.2,
-              child: TasksList(tasks: tasks),
+              child: TasksList(),
             ),
           ),
         ],
@@ -82,20 +71,19 @@ class _TasksScreenState extends State<TasksScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
         onPressed: () {
-          // setState(() {});
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return AddNewTask(
-                tasks: tasks,
-                onTaskAdded: (updatedTasks) {
-                  setState(() {
-                    tasks = updatedTasks;
-                  });
-                },
-              );
-            },
-          );
+          // showModalBottomSheet(
+          //   context: context,
+          //   builder: (context) {
+          //     return AddNewTask(
+          //       tasks: tasks,
+          //       onTaskAdded: (updatedTasks) {
+          //         setState(() {
+          //           tasks = updatedTasks;
+          //         });
+          //       },
+          //     );
+          //   },
+          // );
         },
         child: const Icon(
           Icons.add,
