@@ -11,17 +11,16 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-
   List<Task> tasks = [
     Task(name: 'buy milk'),
     Task(name: 'buy eggs'),
     Task(name: 'buy bread'),
     Task(name: 'buy pc'),
   ];
-  
+
   @override
   Widget build(BuildContext context) {
-     String tileTitle;
+    // String tileTitle;
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       body: Column(
@@ -75,7 +74,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 color: Colors.white,
               ),
               // width: MediaQuery.of(context).size.width * 1.2,
-              child: TasksList(),
+              child: TasksList(tasks: tasks),
             ),
           ),
         ],
@@ -83,10 +82,11 @@ class _TasksScreenState extends State<TasksScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
         onPressed: () {
+          // setState(() {});
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return const AddNewTask();
+              return AddNewTask(tasks: tasks);
             },
           );
         },

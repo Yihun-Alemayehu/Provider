@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/models/task_model.dart';
 
 class AddNewTask extends StatefulWidget {
-  const AddNewTask({super.key});
+  final List<Task> tasks;
+  const AddNewTask({super.key, required this.tasks});
 
   @override
   State<AddNewTask> createState() => _AddNewTaskState();
@@ -10,11 +12,6 @@ class AddNewTask extends StatefulWidget {
 class _AddNewTaskState extends State<AddNewTask> {
   final TextEditingController _controller = TextEditingController();
 
-  // @override
-  // void dispose() {
-  //   _controller = TextEditingController();
-  //   super.dispose();
-  // }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,7 +60,10 @@ class _AddNewTaskState extends State<AddNewTask> {
               //   backgroundColor: Colors.blueAccent,
               // ),
               onPressed: () {
-                
+                setState(() {
+                  widget.tasks.add(Task(name: _controller.text));
+                });
+                Navigator.of(context).pop();
               },
               child: const Text(
                 'Add',
