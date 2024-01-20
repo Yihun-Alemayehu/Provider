@@ -29,10 +29,10 @@ class _TasksScreenState extends State<TasksScreen> {
           Container(
             padding:
                 const EdgeInsets.only(top: 60, right: 30, left: 30, bottom: 60),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 30,
                   child: Icon(
@@ -41,10 +41,10 @@ class _TasksScreenState extends State<TasksScreen> {
                     color: Colors.blueAccent,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   'Todo',
                   style: TextStyle(
                     fontSize: 50,
@@ -53,8 +53,8 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '12 tasks',
-                  style: TextStyle(
+                  '${tasks.length} tasks',
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,
                     // fontWeight: FontWeight.w700,
@@ -86,7 +86,14 @@ class _TasksScreenState extends State<TasksScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) {
-              return AddNewTask(tasks: tasks);
+              return AddNewTask(
+                tasks: tasks,
+                onTaskAdded: (updatedTasks) {
+                  setState(() {
+                    tasks = updatedTasks;
+                  });
+                },
+              );
             },
           );
         },

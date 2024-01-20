@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:todoey/models/task_model.dart';
 
+typedef TaskAddedCallBack = void Function(List<Task> updatedTasks);
 class AddNewTask extends StatefulWidget {
+  final TaskAddedCallBack onTaskAdded;
   final List<Task> tasks;
-  const AddNewTask({super.key, required this.tasks});
+  const AddNewTask({super.key, required this.tasks, required this.onTaskAdded});
 
   @override
   State<AddNewTask> createState() => _AddNewTaskState();
@@ -62,6 +64,7 @@ class _AddNewTaskState extends State<AddNewTask> {
               onPressed: () {
                 setState(() {
                   widget.tasks.add(Task(name: _controller.text));
+                  widget.onTaskAdded(widget.tasks);
                 });
                 Navigator.of(context).pop();
               },
